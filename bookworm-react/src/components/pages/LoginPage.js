@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import connect from 'react-redux'
+import { connect } from 'react-redux';
 import LoginForm from '../forms/LoginForm';
-import Login from '../../actions/auth';
+import {login} from '../../actions/auth';
 
 class LoginPage extends React.Component {
     // login is the redux thunk method and history is passed as props becoz this is a route component
@@ -19,8 +19,8 @@ LoginPage.propTypes = {
     login: PropTypes.fun.isRequired,
     history: PropTypes.shape({
         push: PropTypes.fun.isRequired
-    })
+    }).isRequired
 }
 // first parameter allows us to pass redux state into this component as props
-
+// 2nd one is map dispatch props.
 export default connect(null, { login })(LoginPage);
