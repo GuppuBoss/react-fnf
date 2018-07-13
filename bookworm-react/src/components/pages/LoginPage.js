@@ -6,19 +6,16 @@ import {login} from '../../actions/auth';
 
 class LoginPage extends React.Component {
     // login is the redux thunk method and history is passed as props becoz this is a route component
-    submit = (data) => this.props.login(data).then(() => this.props.history.push("/"))
+    // submit = (data) => this.props.login(data).then(() => this.props.history.push("/"))
+    submit = (data) => console.log('SUBMIT DATA', data);
     render() {
-        return ( <div>
-            <h1> Login Page </h1>
-            <LoginForm submit = { this.submit } />
-            </div>
-        );
+        return (<div> <h1>Login Page</h1> <LoginForm submit={this.submit} /> </div>);
     }
 }
 LoginPage.propTypes = {
-    login: PropTypes.fun.isRequired,
+    login: PropTypes.func.isRequired,
     history: PropTypes.shape({
-        push: PropTypes.fun.isRequired
+        push: PropTypes.func.isRequired
     }).isRequired
 }
 // first parameter allows us to pass redux state into this component as props

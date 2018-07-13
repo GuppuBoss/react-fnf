@@ -21,15 +21,14 @@ class LoginForm extends Component {
   onSubmit = () => {
     const errors = this.validate(this.state.data);
     this.setState({ errors });
-    // check empty object es way
-    if(Object.keys(errors).length === 0) {
-      this.setState({ loading: true })
-      // redux pass state methods as props
-      this.props
-        .submit(this.state.data)
-        .catch(err => this.setState({ errors: err.response.data.errors, loading: false }) );
+    if (Object.keys(errors).length === 0) {
+      this.setState({ loading: true });
+      this.props.submit(this.state.data).catch(err => {
+          console.log('ERROR', err);
+          // this.setState({ errors: err.response.data.errors, loading: false })
+        });
     }
-  }
+  };
 
   validate = (data) => {
     const errors = {}
